@@ -31,7 +31,10 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC = ROOT / "public" / "data"
 DOCS = ROOT / "docs" / "data"
-SCHEDULE_URL = "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2_1.json"
+SCHEDULE_URLS = [
+    ("CDN principal", "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2.json"),
+    ("CDN alternativo", "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2_1.json"),
+]
 ESPN_POSTS = "https://latinamerica.espnpressroom.com/wp-json/wp/v2/posts"
 CHILE = ZoneInfo("America/Santiago")
 MADRID = ZoneInfo("Europe/Madrid")
@@ -185,6 +188,35 @@ def http_get(url: str, *, accept_json: bool = False) -> bytes:
 
 def get_json(url: str) -> Any:
     return json.loads(http_get(url, accept_json=True).decode("utf-8"))
+
+
+def get_nba_schedule_json(url: str) -> Any:
+    """Fetch NBA schedule using the same browser-like headers expected by NBA.com."""
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": UA,
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "en-US,en;q=0.9,es;q=0.7",
+            "Origin": "https://www.nba.com",
+            "Referer": "https://www.nba.com/",
+            "Cache-Control": "no-cache",
+        },
+    )
+    with urllib.request.urlopen(req, timeout=TIMEOUT) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def fetch_official_schedule() -> tuple[dict[str, Any], dict[str, dict[str, Any]], str]:
+    """Try both official NBA CDN schedule variants before falling back locally."""
+    errors: list[str] = []
+    for label, url in SCHEDULE_URLS:
+        try:
+            schedule, source_games = official_schedule(get_nba_schedule_json(url))
+            return schedule, source_games, label
+        except Exception as exc:
+            errors.append(f"{label}:{type(exc).__name__}")
+    raise RuntimeError("; ".join(errors) or "NBA schedule unavailable")
 
 
 def get_text(url: str) -> str:
@@ -653,11 +685,11 @@ def run(offline: bool = False) -> int:
         log.append("Modo offline: calendario local")
     else:
         try:
-            schedule, source_games = official_schedule(get_json(SCHEDULE_URL))
-            log.append(f"NBA: calendario oficial ({len(schedule['games'])} partidos)")
+            schedule, source_games, nba_source = fetch_official_schedule()
+            log.append(f"NBA: calendario oficial {nba_source} ({len(schedule['games'])} partidos)")
         except Exception as exc:
             schedule = json.loads((PUBLIC / "schedule.json").read_text(encoding="utf-8"))
-            log.append(f"NBA: se conserva calendario local ({type(exc).__name__})")
+            log.append(f"NBA: se conserva calendario local ({type(exc).__name__}: {exc})")
 
     now = datetime.now(timezone.utc)
     near = target_games(schedule, now)
@@ -686,7 +718,7 @@ def run(offline: bool = False) -> int:
         "lastUpdated": now.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "games": games_out,
         "automation": {
-            "version": "2.2",
+            "version": "2.2.2",
             "window": "ayer-hoy-mañana Chile",
             "notes": log,
         },
