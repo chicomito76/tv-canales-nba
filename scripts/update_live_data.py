@@ -109,6 +109,7 @@ CANONICAL = {
     "m+ deportes 3": "Movistar Deportes 3", "movistar deportes 3": "Movistar Deportes 3",
     "dazn": "DAZN", "dazn baloncesto": "DAZN Baloncesto", "dazn baloncesto 1": "DAZN Baloncesto",
     "dazn baloncesto 2": "DAZN Baloncesto 2", "dazn baloncesto 3": "DAZN Baloncesto 3",
+    "baloncesto de dazn": "DAZN Baloncesto", "baloncesto 2 de dazn": "DAZN Baloncesto 2", "baloncesto 3 de dazn": "DAZN Baloncesto 3",
     "nba tv alternativa espanol": "NBA TV alternativa español",
 }
 
