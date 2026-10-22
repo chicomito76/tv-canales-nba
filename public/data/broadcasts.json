@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-22T21:27:30Z",
+  "lastUpdated": "2026-10-22T21:46:50Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -20,9 +20,9 @@
     "20261021-MIN-MIA": {
       "status": "confirmed",
       "channels": [
-        "ESPN 2",
-        "Disney+",
-        "DAZN Baloncesto"
+        "DAZN Baloncesto",
+        "ESPN",
+        "Disney+"
       ]
     },
     "20261021-IND-NOP": {
@@ -34,8 +34,10 @@
       "channels": []
     },
     "20261021-DAL-HOU": {
-      "status": "pending",
-      "channels": []
+      "status": "confirmed",
+      "channels": [
+        "ESPN"
+      ]
     },
     "20261021-PHX-POR": {
       "status": "pending",
@@ -44,7 +46,7 @@
     "20261021-GSW-LAL": {
       "status": "confirmed",
       "channels": [
-        "ESPN 2",
+        "ESPN",
         "Disney+",
         "DAZN Baloncesto 2"
       ]
@@ -74,8 +76,12 @@
       "channels": []
     },
     "20261023-DAL-IND": {
-      "status": "pending",
-      "channels": []
+      "status": "confirmed",
+      "channels": [
+        "ESPN 3",
+        "ESPN 2",
+        "Disney+"
+      ]
     },
     "20261023-MIN-ORL": {
       "status": "pending",
@@ -127,7 +133,7 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: se conserva calendario local (HTTPError)",
-      "ESPN: fuente no disponible (HTTPError)",
+      "ESPN: 4 partidos identificados (HTML)",
       "Movistar/DAZN: 2 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
