@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-22T19:55:08Z",
+  "lastUpdated": "2026-10-22T20:30:25Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -126,7 +126,11 @@
     "version": "2.1",
     "window": "ayer-hoy-mañana Chile",
     "notes": [
-      "Modo offline: calendario local"
+      "NBA: se conserva calendario local (HTTPError)",
+      "ESPN: fuente no disponible (HTTPError)",
+      "Movistar/DAZN: 2 coincidencias de canal",
+      "TNT/HBO Max: 0 partidos identificados",
+      "CDN: fuente no disponible (HTTPError)"
     ]
   }
 }
