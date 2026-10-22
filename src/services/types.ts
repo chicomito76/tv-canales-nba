@@ -11,6 +11,9 @@ export interface Broadcast {
   status: BroadcastStatus;
   channels: string[];
 }
+export interface ResolvedBroadcast extends Broadcast {
+  source: "automatic" | "local";
+}
 export interface Schedule {
   demo?: boolean;
   games: Game[];

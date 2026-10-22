@@ -118,7 +118,7 @@ h1 {
   object-fit: cover;
   position: absolute;
   inset: 0;
-  object-position: center;
+  object-position: 79% center;
 }
 .hero:after {
   content: "";
@@ -572,6 +572,9 @@ h1 {
   .hero {
     height: 280px;
   }
+  .hero img {
+    object-position: 72% center;
+  }
   .hero h2 {
     font-size: 45px;
   }
@@ -613,5 +616,216 @@ h1 {
   *:after {
     animation: none !important;
     transition: none !important;
+  }
+}
+
+/* v2: local administrator mode */
+.brand-button {
+  padding: 0;
+  min-height: 44px;
+  text-align: left;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.local-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 8px;
+  color: #f6a4c2;
+  font-size: 9px;
+  letter-spacing: 0.2px;
+}
+.admin-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+.admin-back,
+.admin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.admin-back {
+  min-height: 40px;
+  color: #e7c6d4;
+  font-size: 12px;
+}
+.admin-badge {
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: #401226;
+  border: 1px solid #7c294b;
+  color: #ff8db4;
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  font-weight: 700;
+}
+.admin-game {
+  display: grid;
+  gap: 5px;
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(120deg, #31101f, #1f0d16);
+  border: 1px solid #54243a;
+  margin-bottom: 16px;
+}
+.admin-game small {
+  color: #b990a0;
+  text-transform: capitalize;
+  font-size: 10px;
+}
+.admin-game strong {
+  font-size: 15px;
+}
+.admin-game > span {
+  color: #c56b8b;
+  font-size: 11px;
+}
+.automatic-line,
+.override-line {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #4a2233;
+  color: #c4a2b0;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.override-line {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ff91b7;
+}
+.admin-status {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 4px;
+  background: #28131e;
+  border-radius: 14px;
+  margin: 16px 0 22px;
+}
+.admin-status button {
+  border-radius: 10px;
+  color: #b99aa8;
+  font-size: 12px;
+}
+.admin-status button.selected {
+  background: linear-gradient(135deg, #da1f5e, #a9143e);
+  color: #fff;
+}
+.admin-section-title {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #f3dce5;
+}
+.channel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.channel-grid label {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 9px 10px;
+  border-radius: 11px;
+  border: 1px solid #492136;
+  background: #241019;
+  color: #bfa1ae;
+  font-size: 10px;
+  line-height: 1.25;
+}
+.channel-grid label.checked {
+  border-color: #c52a5f;
+  background: #3a1225;
+  color: #fff;
+}
+.channel-grid input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+.admin-message {
+  margin: 15px 0 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #351427;
+  color: #f3c2d5;
+  font-size: 11px;
+}
+.admin-actions {
+  display: grid;
+  gap: 9px;
+  margin-top: 6px;
+}
+.admin-actions .primary,
+.admin-actions .secondary,
+.backup-actions button,
+.import-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+}
+.admin-actions .secondary {
+  min-height: 44px;
+  border: 1px solid #5b2b40;
+  border-radius: 12px;
+  color: #d5b2c0;
+}
+.backup-box {
+  margin-top: 28px;
+  padding: 16px;
+  border: 1px solid #492438;
+  border-radius: 16px;
+  background: #1e0d15;
+}
+.backup-box h3 {
+  font-size: 14px;
+  margin: 0 0 6px;
+}
+.backup-box p {
+  margin: 0 0 14px;
+  color: #ad8e9a;
+  font-size: 10px;
+  line-height: 1.5;
+}
+.backup-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.backup-actions button,
+.import-button {
+  min-height: 44px;
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid #612a43;
+  color: #f2c6d7;
+  font-size: 10px;
+  cursor: pointer;
+}
+.import-button input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+.admin-hint {
+  text-align: center;
+  color: #8f707d;
+  font-size: 9px;
+  line-height: 1.6;
+  margin: 18px 12px 0;
+}
+@media (max-width: 390px) {
+  .channel-grid {
+    grid-template-columns: 1fr;
   }
 }

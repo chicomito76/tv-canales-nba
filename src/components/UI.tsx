@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import {
   Home,
   Users,
@@ -10,15 +11,40 @@ import {
   Clock3,
   ArrowUpRight,
   ChevronRight,
+  ShieldCheck,
 } from "lucide-react";
-import type { Game, Broadcast } from "../services/types";
+import type { Game, ResolvedBroadcast } from "../services/types";
 import { chileTime, dateKey, dayLabel, shiftDate } from "../utils/date";
 import { teams } from "../data/teams";
-export type Page = "home" | "teams" | "date" | "favorites";
-export function Header() {
+export type Page = "home" | "teams" | "date" | "favorites" | "admin";
+
+export function Header({
+  onHome,
+  onAdmin,
+}: {
+  onHome: () => void;
+  onAdmin: () => void;
+}) {
+  const timer = useRef<number | undefined>(undefined);
+  const longPress = () => {
+    timer.current = window.setTimeout(onAdmin, 1400);
+  };
+  const cancelLongPress = () => {
+    if (timer.current) window.clearTimeout(timer.current);
+    timer.current = undefined;
+  };
   return (
     <header>
-      <a href="#home" className="brand">
+      <button
+        type="button"
+        className="brand brand-button"
+        onClick={onHome}
+        onPointerDown={longPress}
+        onPointerUp={cancelLongPress}
+        onPointerCancel={cancelLongPress}
+        onPointerLeave={cancelLongPress}
+        aria-label="TV Canales NBA. Mantén presionado para abrir el modo administrador."
+      >
         <span className="brand-icon">
           <Radio size={22} />
         </span>
@@ -28,7 +54,7 @@ export function Header() {
             Hora de Chile <span className="tiny-dot" />
           </p>
         </div>
-      </a>
+      </button>
       <span className="header-label">
         TU CANCHA.
         <br />
@@ -37,6 +63,7 @@ export function Header() {
     </header>
   );
 }
+
 export function BottomNavigation({
   page,
   onChange,
@@ -66,6 +93,7 @@ export function BottomNavigation({
     </nav>
   );
 }
+
 export function ChannelBadge({ name }: { name: string }) {
   return (
     <span className="channel">
@@ -74,6 +102,7 @@ export function ChannelBadge({ name }: { name: string }) {
     </span>
   );
 }
+
 export function FavoriteButton({
   team,
   selected,
@@ -94,6 +123,7 @@ export function FavoriteButton({
     </button>
   );
 }
+
 export function GameCard({
   game,
   broadcast,
@@ -102,7 +132,7 @@ export function GameCard({
   showDay = false,
 }: {
   game: Game;
-  broadcast: Broadcast;
+  broadcast: ResolvedBroadcast;
   favorites: string[];
   toggle: (t: string) => void;
   showDay?: boolean;
@@ -158,10 +188,16 @@ export function GameCard({
             Transmisión pendiente de confirmar
           </>
         )}
+        {broadcast.source === "local" && (
+          <span className="local-source">
+            <ShieldCheck size={12} /> Ajuste local
+          </span>
+        )}
       </div>
     </article>
   );
 }
+
 export function TeamSelector({
   value,
   onChange,
@@ -180,6 +216,7 @@ export function TeamSelector({
     </label>
   );
 }
+
 export function DateSelector({
   value,
   onChange,
@@ -216,6 +253,7 @@ export function DateSelector({
     </div>
   );
 }
+
 export function UpdateStatus({
   updated,
   busy,
@@ -240,6 +278,7 @@ export function UpdateStatus({
     </div>
   );
 }
+
 export function EmptyState({
   text = "No hay partidos en el calendario para este día.",
 }: {
@@ -253,6 +292,7 @@ export function EmptyState({
     </div>
   );
 }
+
 export function OfflineNotice() {
   return (
     <p className="notice" role="status">
@@ -261,6 +301,7 @@ export function OfflineNotice() {
     </p>
   );
 }
+
 export function LoadingState() {
   return (
     <p className="empty" role="status">
@@ -268,6 +309,7 @@ export function LoadingState() {
     </p>
   );
 }
+
 export function SearchActions({ onChange }: { onChange: (p: Page) => void }) {
   return (
     <div className="search-actions">
@@ -292,6 +334,7 @@ export function SearchActions({ onChange }: { onChange: (p: Page) => void }) {
     </div>
   );
 }
+
 export function SectionTitle({
   title,
   count,

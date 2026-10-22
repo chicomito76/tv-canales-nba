@@ -1,0 +1,27 @@
+TV CANALES NBA v2 - PRUEBA ANTES DE PUBLICAR
+=============================================
+
+1. Descomprime el ZIP y reemplaza/usa esta carpeta tv-canales-nba-v2.
+2. En Terminal entra a la carpeta.
+3. Ejecuta:
+   python3 -m http.server 8081 --directory docs
+4. Abre en Safari:
+   http://localhost:8081
+5. Comprueba la pantalla normal.
+6. Mantén presionado el título "TV Canales NBA" durante aprox. 1,4 segundos.
+7. Debe abrir "Modo administrador".
+8. Elige un partido, marca Confirmado y selecciona canales.
+9. Pulsa "Guardar corrección". La app se recargará y debe mostrar la corrección.
+10. Vuelve al administrador y pulsa "Restaurar automático" para quitarla.
+11. Prueba "Exportar copia" si quieres validar el respaldo.
+
+PUBLICACIÓN DESPUÉS DE PROBAR
+=============================
+Copia los archivos de esta v2 sobre tu carpeta Git local actual y ejecuta:
+  git add .
+  git commit -m "TV Canales NBA v2 administrador"
+  git push
+
+GitHub Pages seguirá usando /docs y publicará la nueva versión.
+En el iPhone abre la app, ciérrala y vuelve a abrirla. El Service Worker v2
+reemplaza la caché anterior automáticamente.

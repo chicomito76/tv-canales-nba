@@ -1,0 +1,26 @@
+TV CANALES NBA v2.0
+===================
+
+NOVEDADES
+- Modo Administrador local: mantener presionado "TV Canales NBA" ~1,4 s.
+- Correcciones guardadas en el iPhone (localStorage), sin entrar a GitHub.
+- Las correcciones locales tienen prioridad sobre broadcasts.json.
+- Estados: Confirmado / Pendiente / Ninguno.
+- Selección de canales y plataformas + canal personalizado.
+- Exportación e importación de respaldo de correcciones.
+- Reglas de precisión:
+  * ESPN 2 / ESPN 3 / ESPN Deportes tienen prioridad sobre ESPN genérico.
+  * TNT Sports Premium tiene prioridad sobre TNT Sports genérico.
+  * Movistar Deportes 2/3 > Movistar Deportes > Movistar > DAZN genérico.
+  * DAZN Baloncesto 2/3 > DAZN Baloncesto > DAZN.
+  * Plataformas independientes como Disney+, HBO Max y Prime Video se conservan.
+- "NBA TV" sin verificación en español sigue excluido.
+- Calendario: intenta obtener automáticamente el calendario oficial vigente desde
+  https://cdn.nba.com/static/json/staticData/scheduleLeagueV2_1.json
+  y usa schedule.json como respaldo si la conexión falla.
+- El botón Actualizar vuelve a descargar datos automáticos sin borrar correcciones locales.
+
+IMPORTANTE
+- La automatización de canales en español seguirá ampliándose. La v2 no inventa señales:
+  si el archivo automático no identifica ninguna y no hay corrección local, aparece Pendiente.
+- GitHub sigue alojando la app, pero no hace falta entrar allí para una corrección diaria.

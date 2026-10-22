@@ -11,15 +11,17 @@ import {
 } from "./components/UI";
 import type { Page } from "./components/UI";
 import { HomePage, TeamPage, DatePage, FavoritesPage } from "./pages/Views";
+import { AdminPage } from "./pages/AdminPage";
 import { createScheduleProvider } from "./services/scheduleProvider";
 import { createBroadcastProvider } from "./services/broadcastProvider";
 import { loadData } from "./services/dataLoader";
 import type { Snapshot, Game } from "./services/types";
 import { dateKey } from "./utils/date";
 import { useFavorites } from "./hooks/useFavorites";
+import { useBroadcastOverrides } from "./hooks/useBroadcastOverrides";
 const pageFromHash = (): Page => {
   const p = location.hash.slice(1);
-  return p === "teams" || p === "date" || p === "favorites" ? p : "home";
+  return p === "teams" || p === "date" || p === "favorites" || p === "admin" ? p : "home";
 };
 export default function App() {
   const [page, setPage] = useState<Page>(pageFromHash),
@@ -33,6 +35,14 @@ export default function App() {
     [error, setError] = useState(""),
     [storageWarning, setStorageWarning] = useState(false);
   const { favorites, toggle, warning } = useFavorites();
+  const {
+    overrides,
+    saveOverride,
+    removeOverride,
+    importOverrides,
+    exportText,
+    warning: overrideWarning,
+  } = useBroadcastOverrides();
   async function refresh() {
     setBusy(true);
     setError("");
@@ -81,6 +91,7 @@ export default function App() {
   const schedule = createScheduleProvider(data?.schedule.games ?? [], today),
     broadcasts = createBroadcastProvider(
       data?.broadcasts ?? { lastUpdated: "", games: {} },
+      overrides,
     );
   const cards = (games: Game[], showDay = false) =>
     games.length ? (
@@ -110,10 +121,10 @@ export default function App() {
   });
   return (
     <div className="app">
-      <Header />
+      <Header onHome={() => navigate("home")} onAdmin={() => navigate("admin")} />
       <main id="main">
         {(offline || cached) && data && <OfflineNotice />}
-        {(warning || storageWarning) && (
+        {(warning || storageWarning || overrideWarning) && (
           <p className="notice">
             El navegador no permite guardar todos los datos en este dispositivo.
           </p>
@@ -157,7 +168,7 @@ export default function App() {
               <DatePage date={date} setDate={setDate} today={today}>
                 {cards(schedule.getGamesByDate(date))}
               </DatePage>
-            ) : (
+            ) : page === "favorites" ? (
               <FavoritesPage
                 favorites={favorites}
                 toggle={toggle}
@@ -165,6 +176,23 @@ export default function App() {
               >
                 {cards(favoriteGames, true)}
               </FavoritesPage>
+            ) : (
+              <AdminPage
+                games={[
+                  ...schedule.getGamesForYesterday(),
+                  ...schedule.getGamesForToday(),
+                  ...schedule.getGamesForTomorrow(),
+                ]}
+                today={today}
+                getBroadcast={broadcasts.getBroadcast}
+                getAutomaticBroadcast={broadcasts.getAutomaticBroadcast}
+                hasLocalOverride={broadcasts.hasLocalOverride}
+                saveOverride={saveOverride}
+                removeOverride={removeOverride}
+                importOverrides={importOverrides}
+                exportText={exportText}
+                onExit={() => navigate("home")}
+              />
             )}
           </div>
         ) : null}
@@ -179,7 +207,7 @@ export default function App() {
           Solo transmisiones en español · Sin rastreo
         </p>
       </main>
-      <BottomNavigation page={page} onChange={navigate} />
+      {page !== "admin" && <BottomNavigation page={page} onChange={navigate} />}
     </div>
   );
 }
