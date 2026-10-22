@@ -35,7 +35,7 @@ SCHEDULE_URL = "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2_1.js
 ESPN_POSTS = "https://latinamerica.espnpressroom.com/wp-json/wp/v2/posts"
 CHILE = ZoneInfo("America/Santiago")
 MADRID = ZoneInfo("Europe/Madrid")
-UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 TV-Canales-NBA/2.1"
+UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 TV-Canales-NBA/2.2"
 TIMEOUT = 12
 
 TEAM_NAMES = {
@@ -109,7 +109,8 @@ CANONICAL = {
     "m+ deportes 3": "Movistar Deportes 3", "movistar deportes 3": "Movistar Deportes 3",
     "dazn": "DAZN", "dazn baloncesto": "DAZN Baloncesto", "dazn baloncesto 1": "DAZN Baloncesto",
     "dazn baloncesto 2": "DAZN Baloncesto 2", "dazn baloncesto 3": "DAZN Baloncesto 3",
-    "baloncesto de dazn": "DAZN Baloncesto", "baloncesto 2 de dazn": "DAZN Baloncesto 2", "baloncesto 3 de dazn": "DAZN Baloncesto 3",
+    "baloncesto de dazn": "DAZN Baloncesto", "baloncesto 2 de dazn": "DAZN Baloncesto 2",
+    "baloncesto 3 de dazn": "DAZN Baloncesto 3",
     "nba tv alternativa espanol": "NBA TV alternativa español",
 }
 
@@ -125,6 +126,34 @@ class TextExtractor(HTMLParser):
 
     def text(self) -> str:
         return "\n".join(self.parts)
+
+
+class LinkExtractor(HTMLParser):
+    """Collect anchor URLs plus their visible text from an index page."""
+    def __init__(self, base_url: str) -> None:
+        super().__init__()
+        self.base_url = base_url
+        self.current_href: str | None = None
+        self.current_parts: list[str] = []
+        self.links: list[tuple[str, str]] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag.lower() != "a":
+            return
+        href = dict(attrs).get("href")
+        if href:
+            self.current_href = urllib.parse.urljoin(self.base_url, href)
+            self.current_parts = []
+
+    def handle_data(self, data: str) -> None:
+        if self.current_href and data.strip():
+            self.current_parts.append(data.strip())
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag.lower() == "a" and self.current_href:
+            self.links.append((self.current_href, " ".join(self.current_parts)))
+            self.current_href = None
+            self.current_parts = []
 
 
 def strip_html(value: str) -> str:
@@ -161,6 +190,53 @@ def get_json(url: str) -> Any:
 def get_text(url: str) -> str:
     raw = http_get(url).decode("utf-8", errors="replace")
     return strip_html(raw)
+
+
+def get_html(url: str) -> str:
+    return http_get(url).decode("utf-8", errors="replace")
+
+
+def links_from_page(url: str) -> list[tuple[str, str]]:
+    parser = LinkExtractor(url)
+    parser.feed(get_html(url))
+    return parser.links
+
+
+def recent_article_texts(index_urls: Iterable[str], *, hosts: set[str], limit: int = 18) -> list[str]:
+    """Fetch likely NBA article pages linked from current index/tag pages."""
+    candidates: list[str] = []
+    seen: set[str] = set()
+    for index_url in index_urls:
+        try:
+            links = links_from_page(index_url)
+        except Exception:
+            continue
+        for href, label in links:
+            parsed = urllib.parse.urlparse(href)
+            host = parsed.netloc.lower().removeprefix("www.")
+            if host not in hosts:
+                continue
+            blob = normalize(label + " " + parsed.path)
+            if "nba" not in blob:
+                continue
+            if href in seen:
+                continue
+            # Ignore index/tag/search pages; favor concrete HTML/article URLs.
+            if parsed.path.rstrip("/") in {"", "/nba-t5608", "/polideportivo", "/deportes", "/basquet"}:
+                continue
+            seen.add(href)
+            candidates.append(href)
+            if len(candidates) >= limit:
+                break
+        if len(candidates) >= limit:
+            break
+    texts: list[str] = []
+    for href in candidates[:limit]:
+        try:
+            texts.append(get_text(href))
+        except Exception:
+            continue
+    return texts
 
 
 def iso_utc(value: str) -> datetime:
@@ -273,6 +349,38 @@ def game_context(text: str, away: str, home: str, radius: int = 260) -> str | No
     return ntext[max(0, start - radius): min(len(ntext), end + radius)]
 
 
+def game_line_context(text: str, away: str, home: str) -> str | None:
+    """Return the exact schedule/list line containing both teams when possible."""
+    aliases_a = [normalize(x) for x in TEAM_ALIASES[away]]
+    aliases_h = [normalize(x) for x in TEAM_ALIASES[home]]
+    lines = [normalize(line) for line in text.splitlines() if normalize(line)]
+    for line in lines:
+        if any(a in line for a in aliases_a) and any(h in line for h in aliases_h):
+            return line
+    return None
+
+
+def is_tnt_broadcast_article(text: str) -> bool:
+    n = normalize(text[:1800])
+    has_brand = "tnt sports" in n or "hbo max" in n
+    listing_words = (
+        "cartelera nba", "partidos que podras ver", "donde ver", "transmision en vivo",
+        "por tnt sports", "por hbo max", "ver por tnt", "se juegan por hbo max",
+    )
+    return has_brand and any(word in n for word in listing_words)
+
+
+def is_cdn_broadcast_article(text: str) -> bool:
+    n = normalize(text[:2200])
+    has_cdn = "cdn deportes" in n
+    broadcast_words = (
+        "cdn deportes transmitira", "transmision de la nba", "transmisiones de la nba",
+        "regreso del mejor baloncesto", "television abierta", "la nba vuelve a cdn",
+        "regreso de la nba", "triple cartelera",
+    )
+    return has_cdn and any(word in n for word in broadcast_words)
+
+
 def channels_from_context(context: str) -> list[str]:
     found: list[str] = []
     rules = [
@@ -370,42 +478,79 @@ def apply_movistar(games: list[dict[str, Any]], results: dict[str, list[str]], l
 
 
 def apply_tnt(games: list[dict[str, Any]], results: dict[str, list[str]], log: list[str]) -> None:
-    urls = [
-        "https://tntsports.com.ar/site/programacion/",
-        "https://tntsports.com.ar/site/agenda/",
+    # TNT Sports Chile publishes recurring "Cartelera NBA" articles with per-game channel details.
+    index_urls = [
+        "https://tntsports.cl/nba-t5608",
+        "https://tntsports.cl/polideportivo/",
         "https://tntsports.com.ar/basquet/",
     ]
     texts: list[str] = []
-    for url in urls:
-        try: texts.append(get_text(url))
-        except Exception: pass
+    # Keep index text as a fallback, then crawl recent NBA article links.
+    for url in index_urls:
+        try:
+            texts.append(get_text(url))
+        except Exception:
+            pass
+    texts.extend(recent_article_texts(
+        index_urls,
+        hosts={"tntsports.cl", "tntsports.com.ar"},
+        limit=20,
+    ))
+    texts = [t for t in texts if is_tnt_broadcast_article(t)]
     hits = 0
     for g in games:
         for text in texts:
-            context = game_context(text, g["away"], g["home"])
-            if not context: continue
-            c = channels_from_context(context)
-            tnt = [x for x in c if x.startswith("TNT") or x == "HBO Max"]
+            # Schedule articles list one game per bullet/line. Reading only that line avoids
+            # leaking TNT Sports Premium from a neighboring HBO-Max-only game.
+            context = game_line_context(text, g["away"], g["home"])
+            if not context:
+                context = game_context(text, g["away"], g["home"], 95)
+            if not context:
+                continue
+            channels = channels_from_context(context)
+            tnt = [x for x in channels if x.startswith("TNT") or x == "HBO Max"]
             if tnt:
                 results[g["id"]].extend(tnt)
                 hits += 1
                 break
-    log.append(f"TNT/HBO Max: {hits} partidos identificados")
+    log.append(f"TNT/HBO Max: {hits} partidos identificados ({len(texts)} fuentes de cartelera)")
 
 
 def apply_cdn(games: list[dict[str, Any]], results: dict[str, list[str]], log: list[str]) -> None:
-    try:
-        text = get_text("https://cdn.com.do/?s=NBA")
-    except Exception as exc:
-        log.append(f"CDN: fuente no disponible ({type(exc).__name__})")
+    # CDN Deportes often announces its NBA selections as articles rather than a fixed TV grid.
+    index_urls = [
+        "https://cdndeportes.com.do/",
+        "https://cdndeportes.com.do/deportes/",
+        "https://cdn.com.do/?s=NBA",
+    ]
+    texts: list[str] = []
+    for url in index_urls:
+        try:
+            texts.append(get_text(url))
+        except Exception:
+            pass
+    texts.extend(recent_article_texts(
+        index_urls[:2],
+        hosts={"cdndeportes.com.do"},
+        limit=20,
+    ))
+    texts = [t for t in texts if is_cdn_broadcast_article(t)]
+    if not texts:
+        log.append("CDN: no se encontró una cartelera reciente verificable")
         return
     hits = 0
     for g in games:
-        context = game_context(text, g["away"], g["home"])
-        if context and re.search(r"\bcdn\s+deportes\b", context):
-            results[g["id"]].append("CDN Deportes")
-            hits += 1
-    log.append(f"CDN: {hits} partidos identificados")
+        for text in texts:
+            # Once the article explicitly identifies itself as a CDN NBA broadcast listing,
+            # the presence of the exact matchup is sufficient to tag CDN Deportes.
+            context = game_line_context(text, g["away"], g["home"])
+            if not context:
+                context = game_context(text, g["away"], g["home"], 120)
+            if context:
+                results[g["id"]].append("CDN Deportes")
+                hits += 1
+                break
+    log.append(f"CDN: {hits} partidos identificados ({len(texts)} fuentes verificadas)")
 
 
 def load_existing() -> dict[str, Any]:
@@ -488,7 +633,7 @@ def run(offline: bool = False) -> int:
         "lastUpdated": now.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "games": games_out,
         "automation": {
-            "version": "2.1",
+            "version": "2.2",
             "window": "ayer-hoy-mañana Chile",
             "notes": log,
         },
