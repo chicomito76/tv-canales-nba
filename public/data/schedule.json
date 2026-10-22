@@ -1,0 +1,31 @@
+{
+  "games": [
+    {"id":"20261021-MIL-WAS","utc":"2026-10-21T23:00:00Z","away":"Milwaukee Bucks","home":"Washington Wizards","awayCode":"MIL","homeCode":"WAS"},
+    {"id":"20261021-ATL-ORL","utc":"2026-10-21T23:00:00Z","away":"Atlanta Hawks","home":"Orlando Magic","awayCode":"ATL","homeCode":"ORL"},
+    {"id":"20261021-CHA-BKN","utc":"2026-10-21T23:30:00Z","away":"Charlotte Hornets","home":"Brooklyn Nets","awayCode":"CHA","homeCode":"BKN"},
+    {"id":"20261021-CHI-TOR","utc":"2026-10-21T23:30:00Z","away":"Chicago Bulls","home":"Toronto Raptors","awayCode":"CHI","homeCode":"TOR"},
+    {"id":"20261021-MIN-MIA","utc":"2026-10-21T23:30:00Z","away":"Minnesota Timberwolves","home":"Miami Heat","awayCode":"MIN","homeCode":"MIA"},
+    {"id":"20261021-IND-NOP","utc":"2026-10-22T00:00:00Z","away":"Indiana Pacers","home":"New Orleans Pelicans","awayCode":"IND","homeCode":"NOP"},
+    {"id":"20261021-UTA-MEM","utc":"2026-10-22T00:00:00Z","away":"Utah Jazz","home":"Memphis Grizzlies","awayCode":"UTA","homeCode":"MEM"},
+    {"id":"20261021-DAL-HOU","utc":"2026-10-22T00:30:00Z","away":"Dallas Mavericks","home":"Houston Rockets","awayCode":"DAL","homeCode":"HOU"},
+    {"id":"20261021-PHX-POR","utc":"2026-10-22T02:00:00Z","away":"Phoenix Suns","home":"Portland Trail Blazers","awayCode":"PHX","homeCode":"POR"},
+    {"id":"20261021-GSW-LAL","utc":"2026-10-22T02:00:00Z","away":"Golden State Warriors","home":"Los Angeles Lakers","awayCode":"GSW","homeCode":"LAL"},
+    {"id":"20261021-SAC-LAC","utc":"2026-10-22T02:30:00Z","away":"Sacramento Kings","home":"LA Clippers","awayCode":"SAC","homeCode":"LAC"},
+
+    {"id":"20261022-CLE-PHI","utc":"2026-10-22T23:00:00Z","away":"Cleveland Cavaliers","home":"Philadelphia 76ers","awayCode":"CLE","homeCode":"PHI"},
+    {"id":"20261022-DEN-OKC","utc":"2026-10-23T01:30:00Z","away":"Denver Nuggets","home":"Oklahoma City Thunder","awayCode":"DEN","homeCode":"OKC"},
+
+    {"id":"20261023-CHI-MIL","utc":"2026-10-23T20:00:00Z","away":"Chicago Bulls","home":"Milwaukee Bucks","awayCode":"CHI","homeCode":"MIL"},
+    {"id":"20261023-DAL-IND","utc":"2026-10-23T23:00:00Z","away":"Dallas Mavericks","home":"Indiana Pacers","awayCode":"DAL","homeCode":"IND"},
+    {"id":"20261023-MIN-ORL","utc":"2026-10-23T23:00:00Z","away":"Minnesota Timberwolves","home":"Orlando Magic","awayCode":"MIN","homeCode":"ORL"},
+    {"id":"20261023-TOR-WAS","utc":"2026-10-23T23:00:00Z","away":"Toronto Raptors","home":"Washington Wizards","awayCode":"TOR","homeCode":"WAS"},
+    {"id":"20261023-NYK-BOS","utc":"2026-10-23T23:00:00Z","away":"New York Knicks","home":"Boston Celtics","awayCode":"NYK","homeCode":"BOS"},
+    {"id":"20261023-ATL-CHA","utc":"2026-10-23T23:00:00Z","away":"Atlanta Hawks","home":"Charlotte Hornets","awayCode":"ATL","homeCode":"CHA"},
+    {"id":"20261023-DET-MIA","utc":"2026-10-24T00:00:00Z","away":"Detroit Pistons","home":"Miami Heat","awayCode":"DET","homeCode":"MIA"},
+    {"id":"20261023-NOP-UTA","utc":"2026-10-24T01:30:00Z","away":"New Orleans Pelicans","home":"Utah Jazz","awayCode":"NOP","homeCode":"UTA"},
+    {"id":"20261023-HOU-SAS","utc":"2026-10-24T01:30:00Z","away":"Houston Rockets","home":"San Antonio Spurs","awayCode":"HOU","homeCode":"SAS"},
+    {"id":"20261023-POR-SAC","utc":"2026-10-24T02:00:00Z","away":"Portland Trail Blazers","home":"Sacramento Kings","awayCode":"POR","homeCode":"SAC"},
+    {"id":"20261023-MEM-GSW","utc":"2026-10-24T02:00:00Z","away":"Memphis Grizzlies","home":"Golden State Warriors","awayCode":"MEM","homeCode":"GSW"},
+    {"id":"20261023-LAC-LAL","utc":"2026-10-24T02:00:00Z","away":"LA Clippers","home":"Los Angeles Lakers","awayCode":"LAC","homeCode":"LAL"}
+  ]
+}

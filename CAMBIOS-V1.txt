@@ -1,0 +1,26 @@
+TV Canales NBA — v1 real (22-10-2026)
+
+Cambios realizados:
+- Eliminados los datos de demostración.
+- Calendario real cargado para 21, 22 y 23 de octubre de 2026.
+- Horarios guardados en UTC y mostrados por la app en America/Santiago.
+- Transmisiones verificadas cargadas como confirmed.
+- Partidos sin verificación suficiente quedan como pending (nunca como none por inferencia).
+- Portada cambiada a una composición con Nikola Jokic.
+- docs/ actualizado para publicación directa en GitHub Pages.
+- Service Worker actualizado para invalidar la caché anterior.
+
+Transmisiones confirmadas cargadas:
+21/10 MIN @ MIA: ESPN 2, Disney+, DAZN Baloncesto, Movistar Plus+
+21/10 GSW @ LAL: ESPN 2, Disney+, DAZN Baloncesto 2, Movistar Plus+
+22/10 CLE @ PHI: ESPN 2, Disney+, DAZN Baloncesto, Movistar Plus+
+22/10 DEN @ OKC: ESPN 2, Disney+, DAZN Baloncesto 2, Movistar Plus+
+23/10 NYK @ BOS: Prime Video
+23/10 HOU @ SAS: Prime Video
+
+Nota de compilación:
+En el entorno de revisión, npm no pudo completar la descarga de dependencias por timeout de red.
+Por ello, la carpeta docs/ existente fue actualizada de forma directa y validada (JS, JSON, Service Worker y assets).
+En un Mac con conexión normal, para recompilar desde fuente:
+  npm ci
+  npm run prepare:pages
