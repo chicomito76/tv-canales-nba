@@ -232,10 +232,17 @@ def recent_article_texts(index_urls: Iterable[str], *, hosts: set[str], limit: i
             break
     texts: list[str] = []
     for href in candidates[:limit]:
-        try:
-            texts.append(get_text(href))
-        except Exception:
-            continue
+        parsed = urllib.parse.urlparse(href)
+        host = parsed.netloc.lower().removeprefix("www.")
+        variants = [href]
+        if host == "latinamerica.espnpressroom.com" and not parsed.path.rstrip("/").endswith("/amp"):
+            variants.append(href.rstrip("/") + "/amp/")
+        for candidate in variants:
+            try:
+                texts.append(get_text(candidate))
+                break
+            except Exception:
+                continue
     return texts
 
 
@@ -424,20 +431,66 @@ def broadcaster_hints(raw_game: dict[str, Any]) -> list[str]:
     return precise_channels(found)
 
 
-def espn_sources() -> list[str]:
-    params = urllib.parse.urlencode({"search": "NBA", "per_page": 30, "orderby": "date", "order": "desc"})
-    payload = get_json(f"{ESPN_POSTS}?{params}")
-    texts: list[str] = []
-    for post in payload if isinstance(payload, list) else []:
-        content = post.get("content", {}).get("rendered", "")
-        title = post.get("title", {}).get("rendered", "")
-        texts.append(strip_html(title + "\n" + content))
-    return texts
+def espn_sources() -> tuple[list[str], str]:
+    """Return ESPN Press Room texts, preferring WP JSON and falling back to HTML/AMP."""
+    api_error: Exception | None = None
+    try:
+        params = urllib.parse.urlencode({
+            "search": "NBA",
+            "per_page": 30,
+            "orderby": "date",
+            "order": "desc",
+        })
+        payload = get_json(f"{ESPN_POSTS}?{params}")
+        texts: list[str] = []
+        for post in payload if isinstance(payload, list) else []:
+            content = post.get("content", {}).get("rendered", "")
+            title = post.get("title", {}).get("rendered", "")
+            value = strip_html(title + "\n" + content)
+            if value.strip():
+                texts.append(value)
+        if texts:
+            return texts, "API"
+    except Exception as exc:
+        api_error = exc
+
+    # Some GitHub-hosted requests to wp-json intermittently receive HTTPError/403.
+    # Fall back to ESPN Press Room's public HTML indexes and concrete article pages.
+    index_urls = [
+        "https://latinamerica.espnpressroom.com/?s=NBA",
+        "https://latinamerica.espnpressroom.com/press-releases/",
+        "https://latinamerica.espnpressroom.com/",
+    ]
+    texts = recent_article_texts(
+        index_urls,
+        hosts={"latinamerica.espnpressroom.com"},
+        limit=30,
+    )
+    if texts:
+        return texts, "HTML"
+
+    # Last fallback: the search/index pages themselves can contain the full relevant excerpt.
+    index_texts: list[str] = []
+    for url in index_urls:
+        for candidate in (url, url.rstrip("/") + "/amp/"):
+            try:
+                value = get_text(candidate)
+            except Exception:
+                continue
+            if "nba" in normalize(value):
+                index_texts.append(value)
+                break
+    if index_texts:
+        return index_texts, "HTML/AMP"
+
+    if api_error is not None:
+        raise api_error
+    raise RuntimeError("ESPN Press Room sin datos utilizables")
 
 
 def apply_espn(games: list[dict[str, Any]], results: dict[str, list[str]], log: list[str]) -> None:
     try:
-        texts = espn_sources()
+        texts, source = espn_sources()
     except Exception as exc:
         log.append(f"ESPN: fuente no disponible ({type(exc).__name__})")
         return
@@ -452,7 +505,7 @@ def apply_espn(games: list[dict[str, Any]], results: dict[str, list[str]], log: 
                 results[g["id"]].extend(espn)
                 hits += 1
                 break
-    log.append(f"ESPN: {hits} partidos identificados")
+    log.append(f"ESPN: {hits} partidos identificados ({source})")
 
 
 def apply_movistar(games: list[dict[str, Any]], results: dict[str, list[str]], log: list[str]) -> None:
