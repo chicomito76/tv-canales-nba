@@ -1,0 +1,14 @@
+TV CANALES NBA v2.1 - AUTOMATIZACION
+
+- GitHub Actions ejecuta scripts/update_live_data.py cada 2 horas.
+- El calendario se obtiene del CDN oficial de NBA.
+- Las transmisiones se intentan identificar en:
+  * ESPN Press Room Latinoamérica (ESPN / Disney+)
+  * Movistar Plus (DAZN Baloncesto y M+ Deportes)
+  * TNT Sports / HBO Max (solo si el partido aparece en sus páginas)
+  * CDN Deportes (solo si el partido aparece en su búsqueda)
+  * Prime Video cuando figura como broadcaster nacional/OTT en el calendario NBA.
+- Si una fuente falla, se conserva el último canal confirmado del partido.
+- El Modo Administrador del iPhone siempre tiene prioridad y no se modifica desde GitHub.
+- El botón Actualizar de la app descarga el JSON más reciente publicado por GitHub Pages.
+- No hay tokens, contraseñas ni secretos dentro de la aplicación.

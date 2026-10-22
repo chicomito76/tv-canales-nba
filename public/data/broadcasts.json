@@ -1,32 +1,132 @@
 {
-  "lastUpdated": "2026-10-22T15:48:00Z",
+  "lastUpdated": "2026-10-22T19:55:08Z",
   "games": {
-    "20261021-MIL-WAS": {"status":"pending","channels":[]},
-    "20261021-ATL-ORL": {"status":"pending","channels":[]},
-    "20261021-CHA-BKN": {"status":"pending","channels":[]},
-    "20261021-CHI-TOR": {"status":"pending","channels":[]},
-    "20261021-MIN-MIA": {"status":"confirmed","channels":["ESPN 2","Disney+","DAZN Baloncesto","Movistar Plus+"]},
-    "20261021-IND-NOP": {"status":"pending","channels":[]},
-    "20261021-UTA-MEM": {"status":"pending","channels":[]},
-    "20261021-DAL-HOU": {"status":"pending","channels":[]},
-    "20261021-PHX-POR": {"status":"pending","channels":[]},
-    "20261021-GSW-LAL": {"status":"confirmed","channels":["ESPN 2","Disney+","DAZN Baloncesto 2","Movistar Plus+"]},
-    "20261021-SAC-LAC": {"status":"pending","channels":[]},
-
-    "20261022-CLE-PHI": {"status":"confirmed","channels":["ESPN 2","Disney+","DAZN Baloncesto","Movistar Plus+"]},
-    "20261022-DEN-OKC": {"status":"confirmed","channels":["ESPN 2","Disney+","DAZN Baloncesto 2","Movistar Plus+"]},
-
-    "20261023-CHI-MIL": {"status":"pending","channels":[]},
-    "20261023-DAL-IND": {"status":"pending","channels":[]},
-    "20261023-MIN-ORL": {"status":"pending","channels":[]},
-    "20261023-TOR-WAS": {"status":"pending","channels":[]},
-    "20261023-NYK-BOS": {"status":"confirmed","channels":["Prime Video"]},
-    "20261023-ATL-CHA": {"status":"pending","channels":[]},
-    "20261023-DET-MIA": {"status":"pending","channels":[]},
-    "20261023-NOP-UTA": {"status":"pending","channels":[]},
-    "20261023-HOU-SAS": {"status":"confirmed","channels":["Prime Video"]},
-    "20261023-POR-SAC": {"status":"pending","channels":[]},
-    "20261023-MEM-GSW": {"status":"pending","channels":[]},
-    "20261023-LAC-LAL": {"status":"pending","channels":[]}
+    "20261021-MIL-WAS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-ATL-ORL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-CHA-BKN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-CHI-TOR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-MIN-MIA": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN 2",
+        "Disney+",
+        "DAZN Baloncesto"
+      ]
+    },
+    "20261021-IND-NOP": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-UTA-MEM": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-DAL-HOU": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-PHX-POR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261021-GSW-LAL": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN 2",
+        "Disney+",
+        "DAZN Baloncesto 2"
+      ]
+    },
+    "20261021-SAC-LAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261022-CLE-PHI": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN 2",
+        "Disney+",
+        "DAZN Baloncesto"
+      ]
+    },
+    "20261022-DEN-OKC": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN 2",
+        "Disney+",
+        "DAZN Baloncesto 2"
+      ]
+    },
+    "20261023-CHI-MIL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-DAL-IND": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-MIN-ORL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-TOR-WAS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-NYK-BOS": {
+      "status": "confirmed",
+      "channels": [
+        "Prime Video"
+      ]
+    },
+    "20261023-ATL-CHA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-DET-MIA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-NOP-UTA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-HOU-SAS": {
+      "status": "confirmed",
+      "channels": [
+        "Prime Video"
+      ]
+    },
+    "20261023-POR-SAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-MEM-GSW": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261023-LAC-LAL": {
+      "status": "pending",
+      "channels": []
+    }
+  },
+  "automation": {
+    "version": "2.1",
+    "window": "ayer-hoy-mañana Chile",
+    "notes": [
+      "Modo offline: calendario local"
+    ]
   }
 }

@@ -1,5 +1,5 @@
 const PREFIX = "tv-nba-shell-" + self.registration.scope + "-";
-const CACHE = PREFIX + "__VERSION__";
+const CACHE = PREFIX + "v21-auto-broadcasts-20261022";
 const FILES = __PRECACHE__;
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(FILES)));

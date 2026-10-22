@@ -1,0 +1,14 @@
+TV CANALES NBA v2.1
+
+NOVEDAD
+- Automatización por GitHub Actions cada hora.
+- Calendario NBA oficial.
+- ESPN/Disney+: ESPN Press Room Latinoamérica.
+- DAZN/Movistar: parrillas de Movistar Plus.
+- Prime Video: broadcaster oficial NBA cuando está disponible.
+- TNT/HBO Max y CDN: solo se agregan si el partido aparece en sus fuentes públicas.
+- Tus correcciones del Modo Administrador siguen teniendo prioridad.
+
+IMPORTANTE PARA SUBIR ESTA VERSION
+El repositorio contiene .github/workflows/update-nba-data.yml.
+El token de GitHub usado para hacer push debe permitir modificar workflows además de Contents: Read and write.

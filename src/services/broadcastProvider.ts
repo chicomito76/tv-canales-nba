@@ -7,6 +7,14 @@ const canonical = new Map<string, string>([
   ["espn 2", "ESPN 2"],
   ["espn3", "ESPN 3"],
   ["espn 3", "ESPN 3"],
+  ["espn4", "ESPN 4"],
+  ["espn 4", "ESPN 4"],
+  ["espn5", "ESPN 5"],
+  ["espn 5", "ESPN 5"],
+  ["espn6", "ESPN 6"],
+  ["espn 6", "ESPN 6"],
+  ["espn7", "ESPN 7"],
+  ["espn 7", "ESPN 7"],
   ["espn deportes", "ESPN Deportes"],
   ["disney plus", "Disney+"],
   ["disney+", "Disney+"],
@@ -18,6 +26,10 @@ const canonical = new Map<string, string>([
   ["prime video", "Prime Video"],
   ["amazon prime video", "Prime Video"],
   ["cdn deportes", "CDN Deportes"],
+  ["movistar", "Movistar"],
+  ["movistar plus", "Movistar"],
+  ["movistar plus+", "Movistar"],
+  ["m+ deportes", "Movistar Deportes"],
   ["movistar deportes", "Movistar Deportes"],
   ["movistar deportes 2", "Movistar Deportes 2"],
   ["movistar deportes 3", "Movistar Deportes 3"],
@@ -56,7 +68,7 @@ export function preferPreciseChannels(channels: string[]): string[] {
 
   return items.filter((name) => {
     // ESPN: ESPN is only a fallback when a specific ESPN signal is unknown.
-    if (name === "ESPN" && items.some((c) => /^ESPN (2|3|Deportes)$/.test(c)))
+    if (name === "ESPN" && items.some((c) => /^ESPN (2|3|4|5|6|7|Deportes)$/.test(c)))
       return false;
 
     // TNT: keep Premium over the broader TNT Sports label.
@@ -64,6 +76,11 @@ export function preferPreciseChannels(channels: string[]): string[] {
 
     // Movistar / DAZN: prefer the most precise linear signal. DAZN remains a
     // fallback only if no Movistar or DAZN Baloncesto signal is known.
+    if (
+      name === "Movistar" &&
+      (any("Movistar Deportes") || any("DAZN Baloncesto"))
+    )
+      return false;
     if (
       name === "Movistar Deportes" &&
       items.some((c) => /^Movistar Deportes [23]$/.test(c))

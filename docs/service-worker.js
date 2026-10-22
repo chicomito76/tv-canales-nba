@@ -1,5 +1,5 @@
 const PREFIX = "tv-nba-shell-" + self.registration.scope + "-";
-const CACHE = PREFIX + "v2-admin-auto-schedule-20261022b";
+const CACHE = PREFIX + "v21-auto-broadcasts-20261022";
 const FILES = ["./","./assets/index-BekZuGRV.css","./assets/index-CEYixTWm.js","./icons/apple-touch-icon.png","./icons/icon-192.png","./icons/icon-512.png","./icons/maskable-512.png","./images/hero-jokic.png","./index.html","./manifest.webmanifest","./v2-bootstrap.js"];
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(FILES)));

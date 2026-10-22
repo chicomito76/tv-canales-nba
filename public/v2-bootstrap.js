@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const VERSION = "2.0.0";
+  const VERSION = "2.1.0";
   const OVERRIDE_KEY = "tv-nba-broadcast-overrides-v2";
   const NBA_SCHEDULE_URL =
     "https://cdn.nba.com/static/json/staticData/scheduleLeagueV2_1.json";
@@ -22,7 +22,7 @@
   };
 
   const CHANNELS = [
-    "ESPN", "ESPN 2", "ESPN 3", "ESPN Deportes", "Disney+",
+    "ESPN", "ESPN 2", "ESPN 3", "ESPN 4", "ESPN 5", "ESPN 6", "ESPN 7", "ESPN Deportes", "Disney+",
     "TNT Sports", "TNT Sports Premium", "HBO Max", "Prime Video",
     "CDN Deportes", "Movistar", "Movistar Deportes", "Movistar Deportes 2",
     "Movistar Deportes 3", "DAZN", "DAZN Baloncesto", "DAZN Baloncesto 2",
@@ -32,6 +32,10 @@
   const canonical = new Map([
     ["espn", "ESPN"], ["espn2", "ESPN 2"], ["espn 2", "ESPN 2"],
     ["espn3", "ESPN 3"], ["espn 3", "ESPN 3"],
+    ["espn4", "ESPN 4"], ["espn 4", "ESPN 4"],
+    ["espn5", "ESPN 5"], ["espn 5", "ESPN 5"],
+    ["espn6", "ESPN 6"], ["espn 6", "ESPN 6"],
+    ["espn7", "ESPN 7"], ["espn 7", "ESPN 7"],
     ["espn deportes", "ESPN Deportes"], ["disney plus", "Disney+"],
     ["disney+", "Disney+"], ["tnt", "TNT Sports"], ["tnt sports", "TNT Sports"],
     ["tnt sports premium", "TNT Sports Premium"], ["max", "HBO Max"],
@@ -68,7 +72,7 @@
     const hasSpecificDazn = items.some((name) => /^DAZN Baloncesto [23]$/.test(name));
 
     return items.filter((name) => {
-      if (name === "ESPN" && items.some((c) => /^ESPN (2|3|Deportes)$/.test(c)))
+      if (name === "ESPN" && items.some((c) => /^ESPN (2|3|4|5|6|7|Deportes)$/.test(c)))
         return false;
       if (name === "TNT Sports" && has("TNT Sports Premium")) return false;
 
