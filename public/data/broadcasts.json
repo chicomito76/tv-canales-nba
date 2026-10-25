@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-25T01:15:23Z",
+  "lastUpdated": "2026-10-25T06:13:18Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -191,6 +191,49 @@
     "20261025-MEM-SAC": {
       "status": "pending",
       "channels": []
+    },
+    "20261026-WAS-CHA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261026-MIN-CLE": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261026-CHI-BOS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261026-DAL-MIA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261026-IND-MIL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261026-PHX-OKC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261026-ATL-HOU": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN"
+      ]
+    },
+    "20261026-MEM-UTA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261026-GSW-DEN": {
+      "status": "confirmed",
+      "channels": [
+        "DAZN Baloncesto"
+      ]
     }
   },
   "automation": {
@@ -198,8 +241,8 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 3 partidos identificados (HTML)",
-      "Movistar/DAZN: 0 coincidencias de canal",
+      "ESPN: 4 partidos identificados (HTML)",
+      "Movistar/DAZN: 1 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
     ]
