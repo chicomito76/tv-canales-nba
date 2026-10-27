@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-10-26T23:54:10Z",
+  "lastUpdated": "2026-10-27T05:06:33Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -246,6 +246,67 @@
     "20261027-SAC-SAS": {
       "status": "pending",
       "channels": []
+    },
+    "20261028-POR-LAL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-MIA-ATL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-WAS-CLE": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-CHA-DET": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-PHI-IND": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261028-ORL-TOR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-NYK-CHI": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-HOU-MIL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-GSW-MIN": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261028-DEN-NOP": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-SAS-UTA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261028-OKC-DAL": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261028-LAL-LAC": {
+      "status": "pending",
+      "channels": []
     }
   },
   "automation": {
@@ -253,7 +314,7 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 2 partidos identificados (HTML)",
+      "ESPN: 5 partidos identificados (HTML)",
       "Movistar/DAZN: 1 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
