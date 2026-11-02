@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-01T23:36:40Z",
+  "lastUpdated": "2026-11-02T06:04:55Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -468,6 +468,21 @@
     "20261102-POR-DEN": {
       "status": "pending",
       "channels": []
+    },
+    "20261103-PHX-GSW": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261103-TOR-LAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261103-MIA-LAL": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
     }
   },
   "automation": {
