@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-02T23:31:15Z",
+  "lastUpdated": "2026-11-03T06:49:19Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -483,6 +483,66 @@
         "ESPN",
         "Disney+"
       ]
+    },
+    "20261104-PHI-DET": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-ATL-WAS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-MIL-BOS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-CHA-BKN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-CHI-NYK": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-IND-MEM": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261104-UTA-NOP": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-CLE-OKC": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261104-MIN-HOU": {
+      "status": "confirmed",
+      "channels": [
+        "Disney+"
+      ]
+    },
+    "20261104-TOR-DEN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-POR-PHX": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261104-DAL-SAS": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+",
+        "DAZN Baloncesto 2"
+      ]
     }
   },
   "automation": {
@@ -490,7 +550,7 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 3 partidos identificados (HTML)",
+      "ESPN: 6 partidos identificados (HTML)",
       "Movistar/DAZN: 1 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
