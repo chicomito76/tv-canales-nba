@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-04T01:23:07Z",
+  "lastUpdated": "2026-11-04T09:14:24Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -543,6 +543,20 @@
         "Disney+",
         "DAZN Baloncesto 2"
       ]
+    },
+    "20261105-LAL-SAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261105-MIA-LAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261105-ORL-PHX": {
+      "status": "confirmed",
+      "channels": [
+        "DAZN Baloncesto"
+      ]
     }
   },
   "automation": {
@@ -550,8 +564,8 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: se conserva calendario local (RuntimeError: CDN principal:HTTPError; CDN alternativo:HTTPError)",
-      "ESPN: 6 partidos identificados (HTML)",
-      "Movistar/DAZN: 1 coincidencias de canal",
+      "ESPN: 5 partidos identificados (HTML)",
+      "Movistar/DAZN: 2 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
     ]
