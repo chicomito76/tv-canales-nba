@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T10:53:35Z",
+  "lastUpdated": "2026-11-06T17:58:05Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -599,8 +599,10 @@
       "channels": []
     },
     "20261107-POR-LAL": {
-      "status": "pending",
-      "channels": []
+      "status": "confirmed",
+      "channels": [
+        "Prime Video"
+      ]
     },
     "20261107-SAS-SAC": {
       "status": "pending",
@@ -638,11 +640,11 @@
     "version": "2.2.2",
     "window": "ayer-hoy-mañana Chile",
     "notes": [
-      "NBA: se conserva calendario local (RuntimeError: CDN principal:HTTPError; CDN alternativo:HTTPError)",
+      "NBA: calendario oficial CDN principal (1198 partidos)",
       "ESPN: 3 partidos identificados (HTML)",
       "Movistar/DAZN: 1 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
-      "CDN: no se encontró una cartelera reciente verificable"
+      "CDN: 0 partidos identificados (1 fuentes verificadas)"
     ]
   }
 }
