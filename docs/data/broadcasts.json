@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-06T02:27:15Z",
+  "lastUpdated": "2026-11-06T10:53:35Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -597,15 +597,50 @@
     "20261106-MIN-NOP": {
       "status": "pending",
       "channels": []
+    },
+    "20261107-POR-LAL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261107-SAS-SAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261107-DEN-IND": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261107-BKN-ATL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261107-NYK-CLE": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261107-WAS-OKC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261107-ORL-GSW": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261107-HOU-PHX": {
+      "status": "pending",
+      "channels": []
     }
   },
   "automation": {
     "version": "2.2.2",
     "window": "ayer-hoy-mañana Chile",
     "notes": [
-      "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 6 partidos identificados (HTML)",
-      "Movistar/DAZN: 2 coincidencias de canal",
+      "NBA: se conserva calendario local (RuntimeError: CDN principal:HTTPError; CDN alternativo:HTTPError)",
+      "ESPN: 3 partidos identificados (HTML)",
+      "Movistar/DAZN: 1 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
     ]
