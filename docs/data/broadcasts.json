@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-08T00:37:11Z",
+  "lastUpdated": "2026-11-08T07:22:27Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -664,6 +664,40 @@
       "channels": []
     },
     "20261108-MIA-SAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261109-LAL-ATL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261109-CLE-CHA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261109-WAS-DET": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261109-MEM-TOR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261109-IND-DAL": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN 3",
+        "ESPN 2",
+        "Disney+"
+      ]
+    },
+    "20261109-DEN-HOU": {
+      "status": "confirmed",
+      "channels": [
+        "Disney+"
+      ]
+    },
+    "20261109-SAS-PHX": {
       "status": "pending",
       "channels": []
     }

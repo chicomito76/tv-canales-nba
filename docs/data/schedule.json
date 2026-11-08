@@ -1665,20 +1665,20 @@
       "homeCode": "SAS"
     },
     {
-      "id": "20261118-CHA-LAL",
-      "utc": "2026-11-18T03:00:00Z",
-      "away": "Charlotte Hornets",
-      "home": "Los Angeles Lakers",
-      "awayCode": "CHA",
-      "homeCode": "LAL"
-    },
-    {
       "id": "20261118-UTA-LAC",
-      "utc": "2026-11-18T04:00:00Z",
+      "utc": "2026-11-18T03:30:00Z",
       "away": "Utah Jazz",
       "home": "LA Clippers",
       "awayCode": "UTA",
       "homeCode": "LAC"
+    },
+    {
+      "id": "20261118-CHA-LAL",
+      "utc": "2026-11-18T04:00:00Z",
+      "away": "Charlotte Hornets",
+      "home": "Los Angeles Lakers",
+      "awayCode": "CHA",
+      "homeCode": "LAL"
     },
     {
       "id": "20261118-MEM-CLE",
@@ -4441,6 +4441,14 @@
       "homeCode": "WAS"
     },
     {
+      "id": "20270111-DEN-NYK",
+      "utc": "2027-01-12T00:00:00Z",
+      "away": "Denver Nuggets",
+      "home": "New York Knicks",
+      "awayCode": "DEN",
+      "homeCode": "NYK"
+    },
+    {
       "id": "20270111-HOU-BOS",
       "utc": "2027-01-12T00:30:00Z",
       "away": "Houston Rockets",
@@ -4449,16 +4457,8 @@
       "homeCode": "BOS"
     },
     {
-      "id": "20270111-DEN-NYK",
-      "utc": "2027-01-12T00:30:00Z",
-      "away": "Denver Nuggets",
-      "home": "New York Knicks",
-      "awayCode": "DEN",
-      "homeCode": "NYK"
-    },
-    {
       "id": "20270111-CLE-MIN",
-      "utc": "2027-01-12T01:00:00Z",
+      "utc": "2027-01-12T02:30:00Z",
       "away": "Cleveland Cavaliers",
       "home": "Minnesota Timberwolves",
       "awayCode": "CLE",
@@ -4466,7 +4466,7 @@
     },
     {
       "id": "20270112-LAL-LAC",
-      "utc": "2027-01-12T03:00:00Z",
+      "utc": "2027-01-12T03:30:00Z",
       "away": "Los Angeles Lakers",
       "home": "LA Clippers",
       "awayCode": "LAL",
