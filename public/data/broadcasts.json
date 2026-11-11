@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-10T23:23:38Z",
+  "lastUpdated": "2026-11-11T06:22:52Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -776,6 +776,26 @@
         "Disney+",
         "DAZN Baloncesto 2"
       ]
+    },
+    "20261112-OKC-POR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261112-TOR-PHI": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261112-DET-WAS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261112-DAL-MIN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261112-CHA-PHX": {
+      "status": "pending",
+      "channels": []
     }
   },
   "automation": {
@@ -783,7 +803,7 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 6 partidos identificados (HTML)",
+      "ESPN: 4 partidos identificados (HTML)",
       "Movistar/DAZN: 1 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
