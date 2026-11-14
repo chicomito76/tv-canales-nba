@@ -1745,20 +1745,20 @@
       "homeCode": "OKC"
     },
     {
-      "id": "20261118-BOS-DEN",
-      "utc": "2026-11-19T02:00:00Z",
-      "away": "Boston Celtics",
-      "home": "Denver Nuggets",
-      "awayCode": "BOS",
-      "homeCode": "DEN"
-    },
-    {
       "id": "20261118-GSW-DAL",
-      "utc": "2026-11-19T02:30:00Z",
+      "utc": "2026-11-19T01:00:00Z",
       "away": "Golden State Warriors",
       "home": "Dallas Mavericks",
       "awayCode": "GSW",
       "homeCode": "DAL"
+    },
+    {
+      "id": "20261118-BOS-DEN",
+      "utc": "2026-11-19T02:30:00Z",
+      "away": "Boston Celtics",
+      "home": "Denver Nuggets",
+      "awayCode": "BOS",
+      "homeCode": "DEN"
     },
     {
       "id": "20261119-UTA-LAL",
