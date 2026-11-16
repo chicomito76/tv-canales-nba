@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-16T02:44:06Z",
+  "lastUpdated": "2026-11-16T11:20:09Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -931,6 +931,18 @@
       "channels": []
     },
     "20261116-PHX-DEN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261117-NYK-TOR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261117-POR-MIN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261117-DET-SAS": {
       "status": "pending",
       "channels": []
     }
