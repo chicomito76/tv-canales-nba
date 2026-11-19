@@ -2289,6 +2289,14 @@
       "homeCode": "HOU"
     },
     {
+      "id": "20261129-MIA-CLE",
+      "utc": "2026-11-29T20:30:00Z",
+      "away": "Miami Heat",
+      "home": "Cleveland Cavaliers",
+      "awayCode": "MIA",
+      "homeCode": "CLE"
+    },
+    {
       "id": "20261129-LAL-MEM",
       "utc": "2026-11-29T21:00:00Z",
       "away": "Los Angeles Lakers",
@@ -2311,14 +2319,6 @@
       "home": "Utah Jazz",
       "awayCode": "PHX",
       "homeCode": "UTA"
-    },
-    {
-      "id": "20261129-MIA-CLE",
-      "utc": "2026-11-29T23:00:00Z",
-      "away": "Miami Heat",
-      "home": "Cleveland Cavaliers",
-      "awayCode": "MIA",
-      "homeCode": "CLE"
     },
     {
       "id": "20261129-ORL-DET",
