@@ -2473,20 +2473,20 @@
       "homeCode": "PHX"
     },
     {
-      "id": "20261202-MIN-POR",
-      "utc": "2026-12-02T03:00:00Z",
-      "away": "Minnesota Timberwolves",
-      "home": "Portland Trail Blazers",
-      "awayCode": "MIN",
-      "homeCode": "POR"
-    },
-    {
       "id": "20261202-UTA-GSW",
-      "utc": "2026-12-02T04:00:00Z",
+      "utc": "2026-12-02T03:00:00Z",
       "away": "Utah Jazz",
       "home": "Golden State Warriors",
       "awayCode": "UTA",
       "homeCode": "GSW"
+    },
+    {
+      "id": "20261202-MIN-POR",
+      "utc": "2026-12-02T04:00:00Z",
+      "away": "Minnesota Timberwolves",
+      "home": "Portland Trail Blazers",
+      "awayCode": "MIN",
+      "homeCode": "POR"
     },
     {
       "id": "20261202-MEM-DET",
