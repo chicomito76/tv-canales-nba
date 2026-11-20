@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-19T21:35:31Z",
+  "lastUpdated": "2026-11-20T03:17:06Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -1060,6 +1060,37 @@
     "20261120-PHX-UTA": {
       "status": "pending",
       "channels": []
+    },
+    "20261121-HOU-DEN": {
+      "status": "confirmed",
+      "channels": [
+        "Prime Video",
+        "Disney+"
+      ]
+    },
+    "20261121-SAC-LAL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261121-MIL-PHI": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261121-POR-NYK": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261121-LAC-DAL": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261121-MEM-MIN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261121-NOP-SAS": {
+      "status": "pending",
+      "channels": []
     }
   },
   "automation": {
@@ -1067,8 +1098,8 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 5 partidos identificados (HTML)",
-      "Movistar/DAZN: 1 coincidencias de canal",
+      "ESPN: 3 partidos identificados (HTML)",
+      "Movistar/DAZN: 0 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
     ]
