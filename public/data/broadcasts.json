@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-11-25T23:37:50Z",
+  "lastUpdated": "2026-11-26T08:18:34Z",
   "games": {
     "20261021-MIL-WAS": {
       "status": "pending",
@@ -1223,6 +1223,58 @@
     "20261126-SAS-POR": {
       "status": "pending",
       "channels": []
+    },
+    "20261127-MIA-NYK": {
+      "status": "confirmed",
+      "channels": [
+        "Prime Video"
+      ]
+    },
+    "20261127-MIL-DET": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-PHI-IND": {
+      "status": "confirmed",
+      "channels": [
+        "ESPN",
+        "Disney+"
+      ]
+    },
+    "20261127-BKN-TOR": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-ATL-BOS": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-MEM-MIN": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-DAL-PHX": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-LAL-SAS": {
+      "status": "confirmed",
+      "channels": [
+        "Prime Video",
+        "ESPN"
+      ]
+    },
+    "20261127-DEN-UTA": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-NOP-LAC": {
+      "status": "pending",
+      "channels": []
+    },
+    "20261127-GSW-POR": {
+      "status": "pending",
+      "channels": []
     }
   },
   "automation": {
@@ -1230,7 +1282,7 @@
     "window": "ayer-hoy-mañana Chile",
     "notes": [
       "NBA: calendario oficial CDN principal (1198 partidos)",
-      "ESPN: 1 partidos identificados (HTML)",
+      "ESPN: 3 partidos identificados (HTML)",
       "Movistar/DAZN: 2 coincidencias de canal",
       "TNT/HBO Max: 0 partidos identificados (0 fuentes de cartelera)",
       "CDN: no se encontró una cartelera reciente verificable"
